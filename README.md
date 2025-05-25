@@ -47,5 +47,3 @@ In a competitive retail landscape, setting the right price is critical — prici
 - Successfully identified **factors impacting pricing**, including customer behavior, seasonal patterns, and competition.
 
 ---
-
-## 🗂️ Project Structure
