@@ -1,49 +1,145 @@
-# 🛍️ Retail Price Optimization using Machine Learning
+# 🛒 Retail Price Optimization Using Machine Learning
+
+This project focuses on analyzing retail sales data to build a regression model that predicts optimal product prices. It includes data cleaning, exploratory analysis, feature engineering, and multiple machine learning models, ranging from linear regressors to advanced ensemble techniques.
+
+---
 
 ## 📌 Project Overview
 
-This project aims to develop a machine learning model that helps e-commerce retailers determine the optimal price for their products by analyzing historical sales and pricing data. The goal is to **maximize profitability while maintaining customer satisfaction**, leveraging data-driven strategies rather than guesswork.
+- **Goal**: Predict the `lag_price` (historical price) for retail products using historical sales and product metadata.
+- **Data Source**: Structured CSV data from Kaggle (uploaded as `retail_price.csv`).
+- **Techniques**:
+  - Exploratory Data Analysis (EDA)
+  - Outlier treatment
+  - Time-based and category-based feature engineering
+  - Correlation analysis
+  - Model training and evaluation
 
 ---
 
-## 🧠 Problem Statement
+## 🧰 Libraries Used
 
-In a competitive retail landscape, setting the right price is critical — pricing too high drives customers away, while pricing too low reduces profit margins. This project focuses on using real-world sales data to:
-- Forecast product demand
-- Analyze price sensitivity
-- Recommend optimal pricing strategies
-
----
-
-## 🚀 Key Features & Objectives
-
-✅ Perform comprehensive exploratory data analysis (EDA)  
-✅ Visualize demand-price relationships  
-✅ Handle outliers and data preprocessing  
-✅ Forecast demand using regression models  
-✅ Optimize price based on predictive insights  
-✅ Compare multiple ML algorithms for performance  
+- **Data Manipulation**: `pandas`, `numpy`, `os`
+- **Visualization**: `matplotlib`, `seaborn`, `plotly.express`
+- **Modeling**:
+  - Traditional: `Ridge`, `Lasso`, `ElasticNet`, `KNN`, `SVR`, `DecisionTree`, `MLP`
+  - Ensembles: `RandomForest`, `GradientBoosting`, `AdaBoost`
+  - Advanced: `XGBoost`, `CatBoost`, `LightGBM`
+- **Utilities**: `scikit-learn`, `warnings`, `datetime`
 
 ---
 
-## 🧪 Technologies Used
+## 📊 Exploratory Data Analysis
 
-| Category               | Tools & Libraries                                  |
-|------------------------|----------------------------------------------------|
-| Language               | Python                                             |
-| Data Manipulation      | Pandas, NumPy                                      |
-| Visualization          | Matplotlib, Seaborn, Plotly                        |
-| Modeling               | scikit-learn, XGBoost, LightGBM, CatBoost          |
-| Algorithms             | Linear Regression, Random Forest, SVR, MLP, etc.  |
-| Evaluation Metrics     | R² Score, Mean Squared Error (MSE)                |
+Key steps include:
+- Distribution analysis of numeric features
+- Revenue-based product sorting
+- Missing value checks
+- Correlation matrix heatmap
+- Time series trends (monthly/daily)
+
+> ✅ Improved correlation heatmap with larger size, better label rotation, and clearer layout.
+
+---
+
+## 🧹 Data Preprocessing
+
+- **Outlier Detection & Capping** using IQR method for key features (`qty`, `customers`, `comp_1`, `comp_3`)
+- **Datetime Features** parsed from `month_year` to extract `day`
+- **One-hot Encoding** applied to `product_category_name`
+
+---
+
+## 🧠 Modeling Pipeline
+
+1. **Feature Matrix & Target Split**:
+   - Features (`X`) exclude `lag_price`
+   - Target (`y`) is `lag_price`
+
+2. **Train-Test Split**: 70/30 split with `random_state=42`
+
+3. **Models Trained**:
+    - ✅ `Ridge`, `Lasso`, `ElasticNet`
+    - ✅ `KNeighborsRegressor`, `SVR`
+    - ✅ `DecisionTree`, `MLPRegressor`
+    - ✅ `RandomForest`, `GradientBoosting`, `AdaBoost`
+    - ✅ `XGBoost`, `LightGBM`, `CatBoost`
+
+4. **Evaluation Metric**:
+   - `R² Score` on training set (extendable to RMSE, MAE)
+
+---
+
+## 🖼️ Visualizations
+
+- Histograms and KDEs for integer features
+- Time-based plots for lag_price trends
+- Feature-pair scatterplots (`pairplot`)
+- Clean correlation heatmap with `.2f` precision annotations
+
+---
+
+## 🚀 Getting Started
+
+### Requirements
+
+Install dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
+`requirements.txt`:
+```
+pandas
+numpy
+matplotlib
+seaborn
+plotly
+scikit-learn
+xgboost
+catboost
+lightgbm
+```
+
+### Run the Code
+
+```bash
+python main.py
+```
+
+Make sure `retail_price.csv` is in the correct path, or update the dataset path inside the script.
 
 ---
 
 ## 📈 Results
 
-- **Best model**: Random Forest Regressor  
-- **R² Score**: 98.51%  
-- **Mean Squared Error**: 1.95  
-- Successfully identified **factors impacting pricing**, including customer behavior, seasonal patterns, and competition.
+All models are benchmarked using training R² scores for initial assessment. Best models can be fine-tuned via `GridSearchCV` or `RandomizedSearchCV` (already imported).
+LGBMRegressor: Train Score = 0.9936
+CatBoostRegressor: Train Score = 0.9996
+---
+
+## 📂 Project Structure
+
+```
+.
+├── main.py
+├── retail_price.csv
+├── README.md
+└── requirements.txt
+```
 
 ---
+
+## 🧠 Future Improvements
+
+- Model interpretability with SHAP values
+- Pipeline packaging with `scikit-learn` `Pipeline`
+- Hyperparameter tuning and cross-validation
+- Model deployment using `Flask` or `Streamlit`
+
+---
+
+## 👤 Author
+
+Built with ❤️ by Abhinav
