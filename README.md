@@ -115,7 +115,7 @@ Make sure `retail_price.csv` is in the correct path, or update the dataset path 
 ## 📈 Results
 
 All models are benchmarked using training R² scores for initial assessment. Best models can be fine-tuned via `GridSearchCV` or `RandomizedSearchCV` (already imported).
-LGBMRegressor: Train Score = 0.9936
+LGBMRegressor: Train Score = 0.9936 and 
 CatBoostRegressor: Train Score = 0.9996
 ---
 
@@ -124,7 +124,6 @@ CatBoostRegressor: Train Score = 0.9996
 ```
 .
 ├── main.py
-├── retail_price.csv
 ├── README.md
 └── requirements.txt
 ```
