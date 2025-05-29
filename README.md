@@ -118,9 +118,11 @@ Make sure `retail_price.csv` is in the correct path, or update the dataset path 
 
 ## 📈 Results
 
-All models are benchmarked using training R² scores for initial assessment. Best models can be fine-tuned via `GridSearchCV` or `RandomizedSearchCV` (already imported).
-LGBMRegressor: Train Score = 0.9936 and 
-CatBoostRegressor: Train Score = 0.9996
+- CatBoostRegressor (tuned via RandomizedSearchCV + early stopping):  
+  • **Test R² = 0.9701**  
+  • **Test MSE = 186.69**
+- Other models can be compared using the same test metrics for consistency.
+
 ---
 
 ## 📂 Project Structure
