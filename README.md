@@ -13,7 +13,7 @@ This project focuses on analyzing retail sales data to build a regression model 
   - Outlier treatment
   - Time-based and category-based feature engineering
   - Correlation analysis
-  - Model training and evaluation
+  - Model training with hyperparameter tuning (RandomizedSearchCV) and early stopping on CatBoost
 
 ---
 
@@ -59,14 +59,18 @@ Key steps include:
 2. **Train-Test Split**: 70/30 split with `random_state=42`
 
 3. **Models Trained**:
+    3. **Models Trained**:
     - ✅ `Ridge`, `Lasso`, `ElasticNet`
     - ✅ `KNeighborsRegressor`, `SVR`
     - ✅ `DecisionTree`, `MLPRegressor`
     - ✅ `RandomForest`, `GradientBoosting`, `AdaBoost`
-    - ✅ `XGBoost`, `LightGBM`, `CatBoost`
+    - ✅ `XGBoost`, `LightGBM`
+    - ✅ **CatBoost (tuned via RandomizedSearchCV with early stopping)**
 
-4. **Evaluation Metric**:
-   - `R² Score` on training set (extendable to RMSE, MAE)
+4. 4. **Evaluation Metric**:
+   - **Test set** performance:
+     - R² = **0.9701**
+     - MSE = **186.69**
 
 ---
 
