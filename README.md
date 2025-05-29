@@ -67,7 +67,7 @@ Key steps include:
     - ✅ `XGBoost`, `LightGBM`
     - ✅ **CatBoost (tuned via RandomizedSearchCV with early stopping)**
 
-4. 4. **Evaluation Metric**:
+4. **Evaluation Metric**:
    - **Test set** performance:
      - R² = **0.9701**
      - MSE = **186.69**
